@@ -9,27 +9,37 @@ const liste = document.getElementById("liste-meteo");
 
 // Récupère et affiche la météo actuelle d'UNE ville
 async function chargerMeteoVille(ville) {
-  // 1. On appelle l'API avec les coordonnées de la ville
-  const reponse = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${ville.latitude}&longitude=${ville.longitude}&current=temperature_2m`
-  );
+    const li = document.createElement("li");
+    li.textContent = "Chargement..."
+    liste.appendChild(li);
+    try{
+        // 1. On appelle l'API avec les coordonnées de la ville
+        const reponse = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${ville.latitude}&longitude=${ville.longitude}&current=temperature_2m`
+        );
 
-  // 2. On traduit la réponse en objet JavaScript
-  const donnees = await reponse.json();
+        // 2. On traduit la réponse en objet JavaScript
+        const donnees = await reponse.json();
 
-  // 3. On récupère la température actuelle et on l'affiche dans la liste
-  const temperature = Math.round(donnees.current.temperature_2m);
+        // 3. On récupère la température actuelle et on l'affiche dans la liste
+        const temperature = Math.round(donnees.current.temperature_2m);
 
-  const li = document.createElement("li");
-  li.textContent = `${ville.nom} : ${temperature} °C`;
-  liste.appendChild(li);
+        li.textContent = `${ville.nom} : ${temperature} °C`;
+    }
+    catch (error) {
+        //What happens in case of an error
+        if(!donnees.ok){
+            throw new Error("Erreur d'appel de l'API : ", error.message);
+        }
+        console.log("Erreur d'appel de l'API : ", error.message);
+    }
 }
 
 // Pour chaque ville, on appelle l'API (une ville après l'autre)
 async function chargerToutesLesVilles() {
-  for (const ville of villes) {
-    await chargerMeteoVille(ville);
-  }
+    for (const ville of villes) {
+        await chargerMeteoVille(ville);
+    }
 }
 
 chargerToutesLesVilles();
