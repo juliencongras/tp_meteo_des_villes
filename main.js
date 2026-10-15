@@ -1,6 +1,4 @@
-// TP Météo des villes (API Open-Meteo)
-
-// ÉTAPE 1 : les données de nos villes, sous forme de tableau d'objets (nom + coordonnées GPS)
+// les données de nos villes, sous forme de tableau d'objets (nom + coordonnées GPS)
 const villes = [
   { nom: "Marseille", latitude: 43.2965, longitude: 5.3698 },
   { nom: "Paris", latitude: 48.8566, longitude: 2.3522 },
