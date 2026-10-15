@@ -15,7 +15,7 @@ async function chargerMeteoVille(ville) {
     try{
         // 1. On appelle l'API avec les coordonnées de la ville
         const reponse = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${ville.latitude}&longitude=${ville.longitude}&current=temperature_2m`
+          `https://api.open-meteo.com/v1/forecast?latitude=${ville.latitude}&longitude=${ville.longitude}&current=temperature_2m,wind_speed_10m`
         );
 
         // 2. On traduit la réponse en objet JavaScript
@@ -23,8 +23,9 @@ async function chargerMeteoVille(ville) {
 
         // 3. On récupère la température actuelle et on l'affiche dans la liste
         const temperature = Math.round(donnees.current.temperature_2m);
+        const vent = Math.round(donnees.current.wind_speed_10m);
 
-        li.textContent = `${ville.nom} : ${temperature} °C`;
+        li.textContent = `${ville.nom} : ${temperature} °C, vent ${vent} km/h`;
     }
     catch (error) {
         //What happens in case of an error
