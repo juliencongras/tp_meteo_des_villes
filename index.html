@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Météo des villes</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 520px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #0b72ef;
+    }
+    #chargement {
+      color: #0ee74c;
+      min-height: 1.2rem;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    li.erreur {
+      color: #e11d1d;
+      font-weight: bold;
+    }
+  </style>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <h1>Météo des villes</h1>
+  <p id="chargement"></p>
+  <ul id="liste-meteo"></ul>
+</body>
+</html>
