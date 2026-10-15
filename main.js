@@ -3,6 +3,8 @@ const villes = [
   { nom: "Marseille", latitude: 43.2965, longitude: 5.3698 },
   { nom: "Paris", latitude: 48.8566, longitude: 2.3522 },
   { nom: "Lyon", latitude: 45.764, longitude: 4.8357 },
+  { nom: "Toulouse", latitude: 43.6043, longitude: 1.4437},
+  { nom: "Montpellier", latitude: 43.6112, longitude: 3.8767}
 ];
 
 const liste = document.getElementById("liste-meteo");
